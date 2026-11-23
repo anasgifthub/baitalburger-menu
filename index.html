@@ -10,6 +10,7 @@
 href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.jpeg">
 
 <style>
+
 :root{
     --gold:#E0CE00;
     --black:#000;
@@ -20,7 +21,7 @@ href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.j
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 html{
@@ -57,30 +58,29 @@ body{
     color:var(--gold);
     font-size:38px;
     margin-bottom:25px;
-    text-shadow:0 0 12px rgba(224,206,0,.35);
+    text-shadow:0 0 10px rgba(224,206,0,.35);
 }
 
 .back-btn,
 .pdf-btn{
     display:block;
-    max-width:280px;
+    max-width:300px;
     margin:0 auto 20px;
     text-align:center;
-    padding:15px 25px;
+    padding:15px 20px;
     background:var(--gold);
     color:#000;
     text-decoration:none;
     border-radius:50px;
     font-size:18px;
     font-weight:bold;
-    transition:.3s ease;
+    transition:.3s;
     box-shadow:0 6px 18px rgba(224,206,0,.35);
 }
 
 .back-btn:hover,
 .pdf-btn:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(224,206,0,.45);
 }
 
 .menu-gallery{
@@ -95,51 +95,116 @@ body{
     height:auto;
     display:block;
     border-radius:18px;
+    cursor:zoom-in;
 
-    /* HD & Sharp Display */
     image-rendering:auto;
     image-rendering:-webkit-optimize-contrast;
 
     filter:
         contrast(1.05)
         saturate(1.05)
-        brightness(1.02);
+        brightness(1.03);
+
+    background:#111;
 
     box-shadow:
         0 10px 30px rgba(255,255,255,.08),
         0 0 15px rgba(224,206,0,.08);
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-
-    transform:translateZ(0);
-    will-change:transform;
-    background:#111;
+    transition:.3s;
 }
 
 .menu-gallery img:hover{
     transform:scale(1.01);
-    box-shadow:
-        0 15px 40px rgba(255,255,255,.12),
-        0 0 20px rgba(224,206,0,.15);
 }
 
 .download-section{
     text-align:center;
-    margin-top:50px;
+    margin-top:45px;
 }
 
 .footer{
     margin-top:50px;
-    padding-top:25px;
+    padding-top:20px;
     border-top:1px solid rgba(255,255,255,.15);
     text-align:center;
     color:#999;
     font-size:14px;
 }
 
-@media (max-width:768px){
+/* FULLSCREEN ZOOM MODAL */
+
+.zoom-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.98);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:9999;
+    padding:10px;
+}
+
+.zoom-modal.active{
+    display:flex;
+}
+
+.zoom-modal img{
+    max-width:100%;
+    max-height:calc(100vh - 120px);
+    object-fit:contain;
+    border-radius:10px;
+    user-select:none;
+    -webkit-user-drag:none;
+    touch-action:pan-x pan-y pinch-zoom;
+    transition:transform .2s ease;
+}
+
+.close-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:#E0CE00;
+    color:#000;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:10001;
+}
+
+.zoom-controls{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:12px;
+    z-index:10001;
+}
+
+.zoom-controls button{
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:50%;
+    background:#E0CE00;
+    color:#000;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+
+.zoom-controls button:active{
+    transform:scale(.95);
+}
+
+@media(max-width:768px){
 
     .container{
         padding:15px;
@@ -155,27 +220,23 @@ body{
 
     .back-btn,
     .pdf-btn{
+        font-size:16px;
         width:100%;
         max-width:320px;
-        font-size:16px;
-        padding:14px;
     }
 
-    .menu-gallery{
-        gap:18px;
-    }
-}
-
-@media (max-width:480px){
-
-    .page-title{
-        font-size:26px;
+    .zoom-controls button{
+        width:56px;
+        height:56px;
+        font-size:22px;
     }
 
-    .menu-gallery img{
-        border-radius:12px;
+    .close-btn{
+        width:48px;
+        height:48px;
     }
 }
+
 </style>
 </head>
 
@@ -185,9 +246,8 @@ body{
 
     <div class="logo">
         <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.jpeg"
-            alt="Bait Al Burger Logo"
-            loading="eager">
+        src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.jpeg"
+        alt="Bait Al Burger Logo">
     </div>
 
     <h1 class="page-title">🍔 Our Menu</h1>
@@ -197,60 +257,28 @@ body{
     </a>
 
     <a href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026.pdf"
-       class="pdf-btn"
-       target="_blank">
-        📄 View Menu PDF
+       target="_blank"
+       class="pdf-btn">
+       📄 View Menu PDF
     </a>
 
     <div class="menu-gallery">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_001-scaled.jpg"
-            alt="Menu Page 1"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_001-scaled.jpg" alt="Menu Page 1" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_002-scaled.jpg"
-            alt="Menu Page 2"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_002-scaled.jpg" alt="Menu Page 2" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_003-scaled.jpg"
-            alt="Menu Page 3"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_003-scaled.jpg" alt="Menu Page 3" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_004-scaled.jpg"
-            alt="Menu Page 4"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_004-scaled.jpg" alt="Menu Page 4" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_005-scaled.jpg"
-            alt="Menu Page 5"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_005-scaled.jpg" alt="Menu Page 5" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_006-scaled.jpg"
-            alt="Menu Page 6"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_006-scaled.jpg" alt="Menu Page 6" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_007-scaled.jpg"
-            alt="Menu Page 7"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_007-scaled.jpg" alt="Menu Page 7" loading="lazy" decoding="async" title="Tap to Zoom">
 
-        <img
-            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_008-scaled.jpg"
-            alt="Menu Page 8"
-            loading="lazy"
-            decoding="async">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_008-scaled.jpg" alt="Menu Page 8" loading="lazy" decoding="async" title="Tap to Zoom">
 
     </div>
 
@@ -258,7 +286,7 @@ body{
 
         <a href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026.pdf"
            class="pdf-btn"
-           download="Bait-Al-Burger-Menu.pdf">
+           download>
             📥 Download Menu PDF
         </a>
 
@@ -269,6 +297,122 @@ body{
     </div>
 
 </div>
+
+<!-- HD ZOOM MODAL -->
+
+<div class="zoom-modal" id="zoomModal">
+
+    <button class="close-btn" id="closeZoom">
+        ✕
+    </button>
+
+    <img id="zoomedImage" src="" alt="Menu Image">
+
+    <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <button id="zoomReset">⟲</button>
+        <button id="zoomIn">+</button>
+    </div>
+
+</div>
+
+<script>
+
+const modal=document.getElementById('zoomModal');
+const zoomedImage=document.getElementById('zoomedImage');
+
+let scale=1;
+
+document.querySelectorAll('.menu-gallery img').forEach(img=>{
+
+    img.addEventListener('click',()=>{
+
+        modal.classList.add('active');
+
+        zoomedImage.src=img.src;
+
+        scale=1;
+        zoomedImage.style.transform='scale(1)';
+
+    });
+
+});
+
+document.getElementById('zoomIn').addEventListener('click',()=>{
+
+    if(scale<6){
+
+        scale+=0.5;
+
+        zoomedImage.style.transform=`scale(${scale})`;
+
+    }
+
+});
+
+document.getElementById('zoomOut').addEventListener('click',()=>{
+
+    if(scale>1){
+
+        scale-=0.5;
+
+        zoomedImage.style.transform=`scale(${scale})`;
+
+    }
+
+});
+
+document.getElementById('zoomReset').addEventListener('click',()=>{
+
+    scale=1;
+
+    zoomedImage.style.transform='scale(1)';
+
+});
+
+document.getElementById('closeZoom').addEventListener('click',()=>{
+
+    modal.classList.remove('active');
+
+});
+
+modal.addEventListener('click',(e)=>{
+
+    if(e.target===modal){
+
+        modal.classList.remove('active');
+
+    }
+
+});
+
+document.addEventListener('keydown',(e)=>{
+
+    if(e.key==='Escape'){
+
+        modal.classList.remove('active');
+
+    }
+
+});
+
+zoomedImage.addEventListener('dblclick',()=>{
+
+    if(scale===1){
+
+        scale=3;
+
+    }else{
+
+        scale=1;
+
+    }
+
+    zoomedImage.style.transform=`scale(${scale})`;
+
+});
+
+</script>
 
 </body>
 </html>
