@@ -32,8 +32,8 @@ body{
     color:#fff;
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 }
 
 .container{
@@ -43,11 +43,11 @@ body{
     text-align:center;
 }
 
-/* Logo section matches page background */
+/* Logo Section */
 
 .logo{
-    background:#000;
     padding:10px 0 25px;
+    background:transparent;
 }
 
 .logo img{
@@ -57,16 +57,20 @@ body{
     margin:auto;
     background:transparent;
     border:none;
+    border-radius:0;
     box-shadow:none;
-    filter:drop-shadow(0 0 12px rgba(224,206,0,.25));
+    filter:none;
 }
 
+/* Title */
+
 .page-title{
-    color:var(--gold);
+    color:#E0CE00;
     font-size:38px;
     margin-bottom:35px;
-    text-shadow:0 0 10px rgba(224,206,0,.35);
 }
+
+/* Buttons */
 
 .back-btn,
 .pdf-btn{
@@ -76,24 +80,24 @@ body{
     padding:15px 20px;
     text-decoration:none;
     text-align:center;
-    background:var(--gold);
+    background:#E0CE00;
     color:#000;
     font-size:18px;
     font-weight:700;
     border-radius:50px;
-    transition:.3s ease;
-    box-shadow:0 6px 18px rgba(224,206,0,.35);
+    transition:0.3s ease;
 }
 
 .back-btn:hover,
 .pdf-btn:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(224,206,0,.45);
 }
 
 .download-section{
     margin-top:25px;
 }
+
+/* Footer */
 
 .footer{
     margin-top:60px;
@@ -106,7 +110,7 @@ body{
 @media (max-width:768px){
 
     .container{
-        padding:30px 15px;
+        padding:25px 15px;
     }
 
     .logo img{
@@ -125,16 +129,16 @@ body{
     }
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
 
     <div class="logo">
         <img
-        src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.jpeg"
-        alt="Bait Al Burger Logo">
+            src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Logo.jpeg"
+            alt="Bait Al Burger Logo">
     </div>
 
     <h1 class="page-title">🍔 Our Menu</h1>
