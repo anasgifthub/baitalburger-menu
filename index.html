@@ -78,6 +78,34 @@ body{
     box-shadow:0 0 15px rgba(255,255,255,.12);
 }
 
+.pdf-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:40px 0 20px;
+}
+
+.pdf-btn{
+    display:inline-block;
+    min-width:240px;
+    text-align:center;
+    padding:15px 20px;
+    background:#E0CE00;
+    color:#000;
+    text-decoration:none;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 4px 12px rgba(224,206,0,.35);
+}
+
+.pdf-btn:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
 .footer{
     margin-top:40px;
     padding-top:20px;
@@ -102,6 +130,17 @@ body{
         padding:14px;
     }
 
+    .pdf-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .pdf-btn{
+        width:100%;
+        max-width:320px;
+        font-size:16px;
+    }
+
 }
 </style>
 </head>
@@ -123,23 +162,37 @@ body{
 
     <div class="menu-gallery">
 
-        <!-- Replace these URLs with your actual menu image URLs -->
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_001-scaled.jpg" alt="Menu Page 1">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_001-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_002-scaled.jpg" alt="Menu Page 2">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_002-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_003-scaled.jpg" alt="Menu Page 3">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_003-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_004-scaled.jpg" alt="Menu Page 4">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_004-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_005-scaled.jpg" alt="Menu Page 5">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_005-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_006-scaled.jpg" alt="Menu Page 6">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_006-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_007-scaled.jpg" alt="Menu Page 7">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_007-scaled.jpg">
+        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_008-scaled.jpg" alt="Menu Page 8">
 
-        <img src="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026_008-scaled.jpg">
+    </div>
+
+    <div class="pdf-buttons">
+
+        <a href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026.pdf"
+           class="pdf-btn"
+           target="_blank">
+            📄 View Menu PDF
+        </a>
+
+        <a href="https://ainglobaltech.com/wp-content/uploads/2026/11/Bait-Al-Burger-Menu-Card-New_Updated-on-21-11-2026.pdf"
+           class="pdf-btn"
+           download="Bait-Al-Burger-Menu.pdf">
+            📥 Download Menu PDF
+        </a>
 
     </div>
 
